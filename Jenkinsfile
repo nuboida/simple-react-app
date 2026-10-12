@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'node --version'
+                sh 'node -e "const [major, minor, patch] = process.versions.node.split(\'.\').map(Number); if (major < 22 || (major === 22 && (minor < 22 || (minor === 22 && patch < 2)))) { console.error(\'Node.js 22.22.2 or newer is required\'); process.exit(1); }"'
+                sh 'npm ci'
             }
         }
         stage('Test') {
