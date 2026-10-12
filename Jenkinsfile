@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'node22'
+        nodejs 'node24.21.0'
     }
     environment {
         CI = 'true'
@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'node --version'
-                sh 'node -e "const [major, minor, patch] = process.versions.node.split(\'.\').map(Number); if (major < 22 || (major === 22 && (minor < 22 || (minor === 22 && patch < 2)))) { console.error(\'Node.js 22.22.2 or newer is required\'); process.exit(1); }"'
+                sh 'node -e "const [major, minor, patch] = process.versions.node.split(\'.\').map(Number); if (major < 24 || (major === 24 && (minor < 21 || (minor === 21 && patch < 0)))) { console.error(\'Node.js 24.21.0 or newer is required\'); process.exit(1); }"'
                 sh 'npm ci'
             }
         }
