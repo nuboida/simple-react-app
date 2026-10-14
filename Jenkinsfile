@@ -24,6 +24,9 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 archiveArtifacts artifacts: 'build/**', fingerprint: true
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh '''
+                    scp -r build/* root@localhost:/build
+                '''
                 sh './jenkins/scripts/kill.sh'
             }
         }
