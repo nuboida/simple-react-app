@@ -25,7 +25,7 @@ pipeline {
                 archiveArtifacts artifacts: 'build/**', fingerprint: true
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh '''
-                    echo $server_id
+                    echo "Using secret: $secret_id"
                 '''
                 sh './jenkins/scripts/kill.sh'
             }
