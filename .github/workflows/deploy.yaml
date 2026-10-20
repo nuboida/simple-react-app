@@ -30,4 +30,5 @@ jobs:
           sudo apt install -y ansible-core
 
       - name: Run Ansible playbook
-        run: ansible-playbook -i ~/inventory.ini ansible/site.yml
+        run: cat ~/inventory.ini
+      - run: ansible-playbook -i ~/inventory.ini ansible/site.yml
