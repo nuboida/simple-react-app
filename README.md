@@ -12,3 +12,8 @@ The `jenkins` directory contains an example of the `Jenkinsfile` (i.e. Pipeline)
 you'll be creating yourself during the tutorial and the `scripts` subdirectory
 contains shell scripts with commands that are executed when Jenkins processes
 the "Test" and "Deliver" stages of your Pipeline.
+
+Run `./jenkins/scripts/create-secrets.sh` to create `.secrets` with the Ansible
+inventory stored in the sourceable `HOST_INVENTORY` shell variable. The script
+replaces `.secrets` and writes it with owner-only permissions. Load it into the
+current shell with `. ./.secrets`.

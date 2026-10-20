@@ -1,0 +1,11 @@
+- name: Deploy application
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Ensure application directory exists
+      ansible.builtin.copy:
+        src: build
+        dest: /build
+        owner: root
+        group: root
+        mode: '0644'
