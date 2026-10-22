@@ -1,11 +1,11 @@
 - name: Deploy application
   hosts: server
-  become: yes
+  become: true
   tasks:
     - name: Ensure application directory exists
       ansible.builtin.copy:
-        src: build
-        dest: /build
+        src: "{{ playbook_dir }}/../build/"
+        dest: "/home/{{ ansible_user }}/app"
         owner: root
         group: root
         mode: '0644'
